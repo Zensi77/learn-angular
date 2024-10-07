@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>Probando Cosas</h1>
+  <button (click)="verPruebas()" class="btn btn-primary">Ver Pruebas de Binding</button> <br>
+  <button (click)="verCalculadora()" class="btn btn-primary mt-3">Ver calculadora</button><br>
+  <button (click)="verPersonas()" class="btn btn-primary mt-3">Formulario de personas</button>
+
+  <div *ngIf="calculadora">
+    <app-calculadora></app-calculadora>
+  </div>
+
+  <div *ngIf="pruebas">
+    <app-persona nombre="luis" [edad_criatura]="2"></app-persona>
+  </div>
+
+  <div *ngIf="personas">
+    <form (ngSubmit)="submitUpPeople()" class="form-row mt-5">
+      <div class="form-group mb-3 col-md-2">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="personaInput.nombre">
+      </div>
+      <div class="form-group mb-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" name="edad" id="edad" [(ngModel)]="personaInput.edad">
+      </div>
+      <div class="form-group mb-3">
+        <label for="pais" class="form-label">Pais</label>
+        <select class="form-select" name="pais" id="pais" [(ngModel)]="personaInput.pais">
+          <option value="espana" selected>España</option>
+          <option value="francia">Francia</option>
+          <option value="alemania">Alemania</option>
+          <option value="italia">Italia</option>
+        </select>
+      </div>
+      <input type="submit" name="submitPersona" id="submitPersona" class="btn btn-success mt-3">
+    </form>
+
+
+    <div *ngIf="listaPersonas.length!=0">
+      <hr>
+      <h2 class="mt-3 text-center">Lista de personas</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Pais</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of listaPersonas; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.edad}}</td>
+            <td>{{persona.pais}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div>
+    <p>Hola, soy {{nombre}}</p>
+    <div *ngIf="edad===0; else mayorQueCero">
+        <p>¡Soy un bebé!</p>
+    </div>
+
+    <ng-template #mayorQueCero>
+        <p>Ya he nacido</p>
+    </ng-template>
+
+    <p>Y soy de {{getPais()}}</p>
+
+
+    <h2>Diferentes tipos de bindeos</h2>
+    <div (keyup)="0">
+        <label for="" class="form-label">Repetidor</label>
+        <input type="text" #entrada class="form-control">
+        <p>{{entrada.value}}</p>
+    </div>
+    <hr>
+
+    <label for="" class="form-label">Property binding</label><br>
+    <button [disabled]="deshabilitarBoton" (click)="agregarPersona()" class="form-control">Disabled</button>
+    <p>{{mensaje}}</p>
+
+    <hr>
+    <label class="form-label" for="">Event Binding</label>
+    <input type="text" class="form-control" (input)="modificarTitulo($event)">
+    <p>{{titulo}}</p>
+
+    <hr>
+    <label for="">Two way binding</label>
+    <input type="text" [(ngModel)]="titulo2">
+    <p>{{titulo2}}</p>
+</div>
