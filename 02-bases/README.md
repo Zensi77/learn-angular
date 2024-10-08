@@ -1,27 +1,33 @@
 # 02Bases
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Vamos a hablar sobre despliegues a producción
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- http-server -> despliega un servidor web en la carpeta que le indiquemos
 
-## Running end-to-end tests
+```bash
+npm install -g http-server
+npm uninstall -g http-server
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Github Pages o Netlify -> despliega la aplicación en la nube
 
-## Further help
+Importante: en el index.html, en la etiqueta base, poner el nombre del repositorio o un ./ para que funcione en local y en producción
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Si no se pone, en producción no funcionará la aplicación
+
+Instalo las siguientes dependencias:
+
+```bash
+npm i del-cli --save-dev
+npm i copyfiles --save-dev
+```
+
+Estas dependencias me permiten borrar archivos y copiar archivos respectivamente, para poder hacer el despliegue a producción de la carpeta /docs, modificando el package.json y ahora para hacer un cd/ci con github actions
+
+```bash
+npm run build:github
+```
