@@ -7,4 +7,5 @@ import { Country } from '../../interfaces/countries.interface';
 })
 export class CountryTableComponent {
   @Input() countries: Country[] = [];
+  @Input() isLoading!: boolean;
 }

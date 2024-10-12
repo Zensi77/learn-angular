@@ -3,13 +3,14 @@
 
 <div class="row">
     <div class="col">
-        <shared-searchBox (onSearch)="searchByCapital($event)" placeholder="Buscar por capital"></shared-searchBox>
+        <shared-searchBox (onSearch)="searchByCapital($event)" [initialValue]="initialTerm"
+            placeholder="Buscar por capital"></shared-searchBox>
     </div>
 </div>
 
 <div class="row">
     <div class="col">
         <hr>
-        <countries-table [countries]="countriesList"></countries-table>
+        <countries-table [countries]="countriesList" [isLoading]="isLoading"></countries-table>
     </div>
 </div>
