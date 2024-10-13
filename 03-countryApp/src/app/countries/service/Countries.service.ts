@@ -25,7 +25,7 @@ export class CountriesService {
 
   private getCountriesRequest(url: string): Observable<Country[]> {
     return this.http.get<Country[]>(url).pipe(
-      catchError(() => of([]))
+      catchError(() => of([])) //Si pongo un tap debajo de este of([]) no se ejecuta, porque el observable ya termino devolviendo [] y si lo pongo arriba se ejecuta aunque haya un error
       // delay(2000) //delay: Permite simular un tiempo de espera en la respuesta del observable
     );
     // .pipe Es un operador que permite concatenar operadores de rxjs y se ejecutan en orden
