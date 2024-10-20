@@ -60,6 +60,7 @@ export class NewPageComponent implements OnInit {
     if (this.currentHero.id) {
       this.heroesService.updateHero(this.currentHero).subscribe((hero) => {
         this.showSnackbar('Registro actualizado');
+        this.router.navigateByUrl('/heroes/list');
       });
       return;
     }
@@ -87,7 +88,7 @@ export class NewPageComponent implements OnInit {
     dialogRef
       .afterClosed()
       .pipe(
-        filter((result) => result), // Si el usuario cancela el dialogo, no se ejecuta el switchMap
+        filter((result: boolean) => result), // Si el usuario cancela el dialogo, no se ejecuta el switchMap
         switchMap(() => this.heroesService.deleteHero(this.currentHero.id)), // Si acepta el dialogo, se ejecuta el deleteHero
         filter((wasDeleted) => wasDeleted) // Si el héroe no fue eliminado, no se ejecuta el subscribe
       )
