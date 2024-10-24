@@ -1,15 +1,15 @@
 <h2>Reactivos: <small> Dinámicos </small></h2>
 <hr>
 
-<form autocomplete="off">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
     <!-- Nombre -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
-            <input class="form-control" placeholder="Nombre de la persona">
-            <span class="form-text text-danger">
-                error message
+            <input class="form-control" placeholder="Nombre de la persona" formControlName="name">
+            <span class="form-text text-danger" *ngIf="isValid('name')">
+                {{ message('name') }}
             </span>
         </div>
     </div>
@@ -20,10 +20,10 @@
         <div class="col-sm-9">
 
             <div class="input-group">
-                <input class="form-control" placeholder="Agregar favorito">
+                <input class="form-control" placeholder="Agregar favorito" [formControl]="newFavorite">
 
 
-                <button class="btn btn-outline-primary" type="button">
+                <button class="btn btn-outline-primary" type="button" (click)="addToFavorites()">
                     Agregar favorito
                 </button>
             </div>
@@ -34,18 +34,18 @@
     <!-- Lista de Juegos Favoritos -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
+        <div class="col-sm-9" formArrayName="favorites">
 
-            <div class="mb-1">
+            <div class="mb-1" *ngFor="let item of favoritesArr.controls; let i=index">
 
                 <div class="input-group">
-                    <input class="form-control">
+                    <input class="form-control" [formControlName]="i">
 
-                    <button class="btn btn-outline-danger" type="button">
+                    <button class="btn btn-outline-danger" type="button" (click)="onDeleteFavorites(i)">
                         Eliminar
                     </button>
                 </div>
-                <span class="form-text text-danger">
+                <span class="form-text text-danger" *ngIf="isValidFieldArray(favoritesArr, i)">
                     Este campo es requerido
                 </span>
 
