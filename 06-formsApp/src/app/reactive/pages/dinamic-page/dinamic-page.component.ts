@@ -14,6 +14,7 @@ import {
 })
 export class DinamicPageComponent {
   constructor(private fb: FormBuilder) {}
+
   myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     favorites: this.fb.array([
