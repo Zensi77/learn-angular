@@ -1,0 +1,7 @@
+<ul class="list-group">
+    @for (item of menuItems(); track $index) {
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="item.route">
+        {{ item.title }}
+    </li>
+    }
+</ul>
