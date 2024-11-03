@@ -1,24 +1,29 @@
 import { Component, signal } from '@angular/core';
-import { TittleComponent } from '@shared/tittle/tittle.component';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from '@shared/title/title.component';
 
-type Grade = 'A' | 'B' | 'F';
+type Grade = 'A'|'B'|'F';
+
 
 @Component({
   standalone: true,
-  imports: [TittleComponent],
+  imports: [CommonModule, TitleComponent],
   templateUrl: './control-flow.component.html',
-  styles: ``,
+  styles: ``
 })
 export default class ControlFlowComponent {
-  showContent = signal(false);
-  grade = signal<Grade>('F');
 
-  readonly = signal(false).asReadonly(); // Computed signal
+  public showContent = signal(false);
+  public grade = signal<Grade>('A');
 
-  frameworks = signal<string[]>(['Angular', 'React', 'Vue']);
-  frameworks2 = signal<string[]>([]);
+  public frameworks = signal(['Angular','Vue','Svelte','Qwik','React']);
+  public frameworks2 = signal([]);
 
-  toggleContent() {
-    this.showContent.update((value) => !value);
+
+  public toggleContent() {
+    this.showContent.update( value => !value );
+
   }
+
+
 }

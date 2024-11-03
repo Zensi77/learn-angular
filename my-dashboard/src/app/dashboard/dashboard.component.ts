@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SideMenuComponent } from '@shared/side-menu/side-menu.component'; // Alias en tsconfig.json
+
+
+import { SidemenuComponent } from '@shared/sidemenu/sidemenu.component';
+
+
 
 @Component({
   standalone: true,
-  imports: [RouterModule, SideMenuComponent],
+  imports: [ RouterModule, SidemenuComponent ],
   templateUrl: './dashboard.component.html',
-  styles: [],
+  styles: ``
 })
-export default class DashboardComponent {}
+export default class DashboardComponent {
+
+}
