@@ -1,0 +1,38 @@
+<app-tittle title="Control Flow"></app-tittle>
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div class="bg white rounded shadow p-10">
+        <h2 class="font-bold m-3">if {{showContent()}} </h2>
+        <button class="p-2 bg-blue-500 text-white rounded" (click)="toggleContent()">
+            Click
+        </button>
+
+        @if (showContent()) {
+        <p class="p-3">Activo</p>
+        } @else {
+        <p class="p-3">Inactivo</p>
+        }
+
+
+    </div>
+</section>
+
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div class="bg white rounded shadow p-10">
+        @switch (grade()) {
+        @case ('A') {
+        <h2 class="font-bold m-3">Excelente</h2>
+        }
+        @case ('B') {
+        <h2 class="font-bold m-3">Bien</h2>
+        }
+        @case ('F') {
+        <h2 class="font-bold m-3">Regular</h2>
+        }
+        @default {
+        <h2 class="font-bold m-3">Desconocido</h2>
+        }
+        }
+    </div>
+</section>
