@@ -23,6 +23,8 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'contact',
+    redirectTo: () => {
+      return '/contact';
+    },
   },
 ];
