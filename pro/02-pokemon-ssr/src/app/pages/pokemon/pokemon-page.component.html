@@ -1,1 +1,49 @@
-<p>pokemon-page works!</p>,
+@if (pokemon() ===null) {
+<div class="flex items-center justify-center h-screen">
+  <div class="text-center">
+    <p class="text-2xl font-bold">Loading...</p>
+  </div>
+</div>
+} @else { @let myPokemon = pokemon();
+
+<section>
+  <div class="flex flex-col justify-center items-center h-screen">
+    <img
+      [src]="myPokemon?.sprites?.other?.['official-artwork']?.front_default"
+      [alt]="myPokemon?.name"
+      class="w-56 h-56 object-contain"
+      width="224"
+      height="224"
+    />
+    <h2 class="text-3xl font-bold capitalize mt-4">{{ myPokemon?.name }}</h2>
+  </div>
+</section>
+
+@if (myPokemon?.cries?.latest) {<audio
+  [src]="myPokemon?.cries?.latest"
+  controls
+  class="w-full max-w-md mx-auto mt-4"
+>
+  Your browser does not support the audio element.</audio
+>}
+
+<section>
+  <div class="flex-flex-col justify-center">
+    <h3 class="text-2xl font-semibold mt-4">Details</h3>
+    <ul class="list-disc pl-6 mt-2">
+      <li><strong>Height:</strong> {{ myPokemon?.height }} decimetres</li>
+      <li><strong>Weight:</strong> {{ myPokemon?.weight }} hectograms</li>
+      <li>
+        <strong>Base Experience:</strong> {{ myPokemon?.base_experience }}
+      </li>
+      <li>
+        <strong>Abilities:</strong>
+        <span *ngFor="let ability of myPokemon?.abilities; let last = last">
+          {{ ability.ability!.name }}<span *ngIf="!last">, </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+}
