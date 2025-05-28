@@ -37,4 +37,13 @@ describe('App routes', () => {
     await router.navigate(['/non-existent']);
     expect(location.path()).toBe('/contact'); // Redirige a /contact por la ruta '**'
   });
+
+  it('should load the proper component', async () => {
+    const aboutRoute = routes.find((route) => route.path === 'about');
+    expect(aboutRoute).toBeDefined();
+
+    const aboutComponent = (await aboutRoute?.loadComponent!()) as any;
+
+    expect(aboutComponent.default.name).toBe('AboutPagesComponent');
+  });
 });
