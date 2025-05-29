@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { IssuesService } from '../../services/Issues.service';
+import { CommonModule } from '@angular/common';
+import { LabelsSelectorComponent } from '../../components/labels-selector/labels-selector.component';
+import { IssueItemComponent } from '../../components/issue-item/issue-item.component';
 
 @Component({
   selector: 'app-issues-list-page',
-  imports: [RouterLink],
+  imports: [CommonModule, LabelsSelectorComponent, IssueItemComponent],
   templateUrl: './issues-list-page.component.html',
   styles: `
     :host {
@@ -12,4 +15,14 @@ import { RouterLink } from '@angular/router';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class IssuesListPageComponent {}
+export default class IssuesListPageComponent {
+  issueService = inject(IssuesService);
+
+  get labelsQuery() {
+    return this.issueService.labelsQuery;
+  }
+
+  get issuesQuery() {
+    return this.issueService.issuesQuery;
+  }
+}

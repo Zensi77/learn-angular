@@ -1,1 +1,16 @@
-<p>issue-page works!</p>,
+<h1>
+  Issue number: <small> {{ issueNumber() }} </small>
+</h1>
+<a routerLink="/issues">View Issue</a>
+
+@if (issueQuery.isLoading()) {
+<p>Loading issue details...</p>
+}@else {
+<issue-comment [issue]="issueQuery.data()!" />
+} @if (issueQuery.isLoading()) {
+<p>Loading comments...</p>
+}@else { @for (comment of issueComments.data(); track comment.id) {
+<issue-comment [issue]="comment" />
+}@empty {
+<p>No comments found for this issue.</p>
+} }

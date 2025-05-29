@@ -10,6 +10,7 @@ import {
 } from '@tanstack/angular-query-experimental';
 
 import { routes } from './app.routes';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
       new QueryClient(),
       withDevtools(() => ({ loadDevtools: true }))
     ),
+    provideMarkdown(),
   ],
 };
