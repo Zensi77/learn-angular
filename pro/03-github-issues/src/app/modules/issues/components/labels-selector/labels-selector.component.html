@@ -3,6 +3,8 @@
   <div
     class="border border-gray-300 rounded-md px-2 py-1 text-sm cursor-pointer"
     [ngStyle]="{ 'border-color': '#' + label.color }"
+    (click)="onLabelClick(label.name)"
+    [class.selected-label]="isSelected(label.name)"
   >
     {{ label.name }}
   </div>

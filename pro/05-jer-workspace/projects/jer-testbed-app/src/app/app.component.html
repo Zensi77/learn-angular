@@ -1,0 +1,6 @@
+<lib-jer-side-menu
+  [isAuthenticated]="isAuthenticated()"
+  [titleColor]="titleColor.green"
+  (onSignIn)="isAuthenticated.set(true)"
+  (onSignOut)="isAuthenticated.set(false)"
+/>
