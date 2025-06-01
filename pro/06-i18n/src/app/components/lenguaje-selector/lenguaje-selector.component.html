@@ -1,10 +1,11 @@
 <select
+  [value]="currentLanguage()"
   name="language"
   id="language"
   class="form-control"
   (change)="onChangeLenguaje($event)"
 >
   @for (leng of languages(); track leng.code) {
-    <option value="{{ leng.code }}">{{ leng.flag }} {{ leng.code }}</option>
+  <option value="{{ leng.code }}">{{ leng.flag }} {{ leng.code }}</option>
   }
 </select>

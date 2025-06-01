@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   signal,
 } from '@angular/core';
@@ -14,6 +15,9 @@ import { LanguajeService } from '../../service/languaje.service';
 })
 export class LenguajeSelectorComponent {
   private readonly _langService = inject(LanguajeService);
+
+  currentLanguage = computed(() => this._langService.currentLanguage());
+
   languages = signal([
     { code: 'en', flag: '🇺🇸' },
     { code: 'es', flag: '🇪🇸' },
